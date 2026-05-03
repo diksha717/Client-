@@ -1,5 +1,5 @@
 # Dockerfile for frontend
-FROM node:18-alpine as builder
+FROM node:22-alpine as builder
 
 WORKDIR /app
 
@@ -11,7 +11,7 @@ COPY . .
 
 RUN npm run build
 
-FROM node:18-alpine
+FROM node:22-alpine
 
 WORKDIR /app
 
@@ -19,6 +19,6 @@ RUN npm install -g serve
 
 COPY --from=builder /app/dist ./dist
 
-EXPOSE 5173
+EXPOSE ${PORT:-3000}
 
-CMD ["serve", "-s", "dist", "-l", "5173"]
+CMD ["sh", "-c", "serve -s dist -l ${PORT:-3000}"]
