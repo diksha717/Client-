@@ -14,7 +14,8 @@
     "lucide-react": "*",
     "react": "*",
     "react-dom": "*",
-    "react-router-dom": "*"
+    "react-router-dom": "*",
+    "serve": "*"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "*",

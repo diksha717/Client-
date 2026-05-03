@@ -17,10 +17,10 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install -g serve
+RUN npm install --production
 
 COPY --from=builder /app/dist ./dist
 
 EXPOSE ${PORT:-3000}
 
-CMD ["sh", "-c", "serve -s dist -l ${PORT:-3000}"]
+CMD ["sh", "-c", "npx serve -s dist -l ${PORT:-3000}"]
